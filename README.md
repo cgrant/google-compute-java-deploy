@@ -114,7 +114,7 @@ VM_NAME=gcedeploy
 gsutil mb gs://${BUCKET_NAME}
 gsutil cp ./target/${JAR_NAME} gs://${BUCKET_NAME}/${JAR_NAME}
 
-gcloud compute firewall-rules create ${VM_NAME}-www --allow tcp:8080 --target-tags ${VM_NAME}
+gcloud compute firewall-rules create ${VM_NAME}-www --allow tcp:80 --target-tags ${VM_NAME}
 
 gcloud compute instances create ${VM_NAME} \
   --tags ${VM_NAME} \
@@ -136,7 +136,7 @@ That should be it lets deploy!
 
 Wait a bit for everything to setup. You'll see the external IP listed in the command completion
 
-After this command comes back the server is still running that script we sent so give it time to load, that java install can take a minute or two. When its done you should see it at ``http://<vm ip address>:8080``
+After this command comes back the server is still running that script we sent so give it time to load, that java install can take a minute or two. When its done you should see it at ``http://<vm ip address>``
 
 ## Cleanup scripts
 
